@@ -1,8 +1,8 @@
 # QuickCart - A simple eCommerce website
 
-QuickCart is a **Next.js eCommerce** project inspired by **github.com/GreatStack**.
-It provides a modern, fast and customizable shopping UI.
-As a QA Engineer, I'm learning how to implement automated tests and create a CI/CD pipeline.
+QuickCart is a **Next.js eCommerce** project inspired by **github.com/GreatStack**. </br>
+It provides a modern, fast and customizable shopping UI. <br/>
+As a QA Engineer, I'm learning to implement automated tests and set up a CI/CD pipeline.
 
 ---
 
