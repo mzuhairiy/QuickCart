@@ -45,3 +45,7 @@ next-env.d.ts
 
 # qodo
 .qodo
+
+# test-reports
+/playwright-report
+/test-results
