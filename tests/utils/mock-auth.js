@@ -43,7 +43,21 @@ export async function setMockAuthState(page, role = 'user') {
 
   const clerkSession = generateClerkSession(userData);
 
-  // Set Clerk storage via page script
+  // Set Clerk cookies for server-side middleware
+  const domain = 'localhost';
+  await page.context().addCookies([
+    {
+      name: '__session',
+      value: `mock-session-token-${userData.id}`,
+      domain,
+      path: '/',
+      httpOnly: true,
+      secure: false, // false for http/localhost
+      sameSite: 'Lax',
+    },
+  ]);
+
+  // Set Clerk storage via page script for client-side SDK
   await page.addInitScript(({ session, jwtKey, dbKey }) => {
     localStorage.setItem(jwtKey, 'mock-jwt-token');
     localStorage.setItem(dbKey, JSON.stringify(session));
@@ -58,6 +72,10 @@ export async function setMockAuthState(page, role = 'user') {
  * Clear all Clerk authentication state
  */
 export async function clearAuthState(page) {
+  // Clear cookies
+  await page.context().clearCookies();
+
+  // Clear localStorage
   await page.addInitScript(({ jwtKey, dbKey }) => {
     localStorage.removeItem(jwtKey);
     localStorage.removeItem(dbKey);
