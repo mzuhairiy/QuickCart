@@ -37,6 +37,39 @@ As a QA Engineer, I'm learning to implement automated tests and set up a CI/CD p
     ```
 ---
 
+## Testing
+
+### E2E Tests
+
+This project uses Playwright for end-to-end testing with mocked Clerk authentication.
+
+**Run all E2E tests:**
+```bash
+npm run test:e2e
+```
+
+**Run specific test file:**
+```bash
+npx playwright test tests/e2e/auth-flow.spec.js
+```
+
+**Run tests in headed mode (see browser):**
+```bash
+npx playwright test --headed
+```
+
+**View test report:**
+```bash
+npx playwright show-report
+```
+
+**Test structure:**
+- `tests/e2e/` - Test files
+- `tests/fixtures/` - Reusable fixtures and test data
+- `tests/utils/` - Helper functions
+
+---
+
 ## License
 
 This project is licensed under the **MIT License**.
