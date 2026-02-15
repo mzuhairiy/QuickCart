@@ -22,6 +22,8 @@ export async function POST(request) {
             user.cartItems[itemId] = quantity;
         }
 
+        // Mark cartItems as modified so Mongoose actually saves the changes
+        user.markModified('cartItems');
         await user.save()
 
         return NextResponse.json({ success: true, message: "Cart updated successfully" }, { status: 200 });
